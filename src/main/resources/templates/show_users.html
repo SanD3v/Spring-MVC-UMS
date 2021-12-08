@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmls="http://www.thymeleaf.org">
+<header>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<title>List User</title>
+</header>
+<body >
+	<div class="container">
+		<h2>List Users</h2>
+		<hr/>
+		<a th:href="@{/addUserForm}" class="btn btn-primary mb-2">Add Employee</a >
+		<table class="table table-striped table-bordered">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Id</th >
+					<th scope="col">Name</th >
+					<th scope="col">email</th >
+					<th scope="col">Action</th >
+				</tr>
+			</thead >
+			<tbody>
+				<tr th:each="user: ${users}">
+					<td th:text="${user.userId}"></td>
+					<td th:text="${user.userName}"></td>
+					<td th:text="${user.userEmail}"></td>
+					<td>
+						<a class="btn btn-primary" th:href="@{/updateForm(userId=${user.userId})}">Update</a>
+						<a class="btn btn-danger" th:href="@{deleteForm(userId=${user.userId})}">Delete</a>
+					</td>
+				</tr>
+			</tbody>
+		</table >
+	</div >
+</body >
+
+</html>
